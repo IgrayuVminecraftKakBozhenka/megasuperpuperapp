@@ -3,51 +3,55 @@ package com.example.megasuperpuperapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    public static int rndcolor() {
-        int color;
-        color = (int) (Math.random() * 256);
-        return color;
-    }
+public final class MainActivity extends AppCompatActivity {
+
+    public final static String INTENT_KEY_HEIGHT = "intent_key_height";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button colorButton = (Button) findViewById(R.id.colorButton);
-        Button highCalc = (Button) findViewById(R.id.highCalc);
-        Intent intent = new Intent(MainActivity.this, HighCalc.class);
-        ConstraintLayout backgroundConstraintLayout = (ConstraintLayout) findViewById(R.id.backGround);
-        colorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
 
-                    backgroundConstraintLayout.setBackgroundColor(Color.rgb(rndcolor(), rndcolor(), rndcolor()));
+        final Button colorButton = (Button) findViewById(R.id.colorButton);
+        final Button highCalcButton = (Button) findViewById(R.id.highCalc);
+        final ConstraintLayout backgroundConstraintLayout = (ConstraintLayout) findViewById(R.id.backGround);
+        final TextView yourHigh = (TextView) findViewById(R.id.main_activity_your_high);
 
-                } catch (Exception e) {
-
-                }
-            }
+        colorButton.setOnClickListener(v -> {
+            final int red = (int) (Math.random() * 256);
+            final int green = (int) (Math.random() * 256);
+            final int blue = (int) (Math.random() * 256);
+            final int color = Color.rgb(red, green, blue);
+            backgroundConstraintLayout.setBackgroundColor(color);
         });
 
-
-        highCalc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    startActivity(intent);
-                    finish();
-                } catch (Exception e) {
-
-                }
+        highCalcButton.setOnClickListener(v -> {
+            try {
+                final Intent intent = new Intent(MainActivity.this, HighCalcActivity.class);
+                startActivityForResult(intent, 1);
+            } catch (ActivityNotFoundException e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data == null) {return;}
+        String high = data.getStringExtra(INTENT_KEY_HEIGHT);
+        final TextView yourHigh = (TextView) findViewById(R.id.main_activity_your_high);
+        yourHigh.setText("Ваш рост " + high);
+    }
+
+
 }
