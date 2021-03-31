@@ -44,7 +44,7 @@ public class HighCalcActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    showKeyboard();
+                    v.postDelayed(()-> showKeyboard(v), 200);
                 } else {
                     hideKeyboard(v);
                 }
@@ -53,12 +53,11 @@ public class HighCalcActivity extends AppCompatActivity implements View.OnClickL
         highInput.requestFocus();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        hideKeyboard(backGround);
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        backGround.requestFocus();
+//    }
 
     private void hideKeyboard(View v) {
         final InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -66,9 +65,9 @@ public class HighCalcActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    private void showKeyboard() {
+    private void showKeyboard(View view) {
         final InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        inputManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.megasuperpuperapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -53,5 +54,13 @@ public final class MainActivity extends AppCompatActivity {
         yourHigh.setText("Ваш рост " + high);
     }
 
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        openQuitDialog();
+//    }
 
+//    private void openQuitDialog() {
+//        AlertDialog.Builder quitDialog = new AlertDialog.Builder(CustomViewDemoActivity.this)
+//    }
 }

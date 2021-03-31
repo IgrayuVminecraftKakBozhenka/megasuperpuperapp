@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">MEGASUPERPUPERAPP</string>
     <string name="start">ЁКАРНЫЙ БАБАЙ, ЖМИ!</string>
+    <string name="ok">OK</string>
+    <string name="back_button">НАЗАД</string>
+    <string name="enter_ur_high">Введите ваш рост</string>
+    <string name="ur_high">Ваш рост</string>
+    <string name="high_calc">Калькулятор роста</string>
+
 </resources>

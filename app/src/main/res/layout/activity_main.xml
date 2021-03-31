@@ -28,7 +28,7 @@
         android:id="@+id/highCalc"
         android:layout_width="217dp"
         android:layout_height="46dp"
-        android:text="Калькулятор роста"
+        android:text="@string/high_calc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/colorButton" />
@@ -43,7 +43,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
-        android:text="Ваш рост "
+        android:text="@string/ur_high"
         app:layout_constraintBottom_toTopOf="@+id/colorButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
