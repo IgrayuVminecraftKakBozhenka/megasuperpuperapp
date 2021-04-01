@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/colorButton"
+        android:id="@+id/main_activity_color_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
@@ -25,13 +25,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/highCalc"
+        android:id="@+id/main_activity_high_calc_button"
         android:layout_width="217dp"
         android:layout_height="46dp"
         android:text="@string/high_calc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/colorButton" />
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_color_button" />
 
     <TextView
         android:id="@+id/main_activity_your_high"
@@ -44,8 +44,12 @@
         android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
         android:text="@string/ur_high"
-        app:layout_constraintBottom_toTopOf="@+id/colorButton"
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_color_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        layout="@layout/toolbar"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

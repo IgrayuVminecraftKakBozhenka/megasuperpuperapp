@@ -33,13 +33,13 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/okButton"
+        app:layout_constraintBottom_toTopOf="@+id/high_calc_ok_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
-            android:id="@+id/highInput"
+            android:id="@+id/high_calc_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_ur_high"
@@ -48,7 +48,7 @@
             android:layout_marginBottom="47dp"
             android:background="@color/white"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/okButton"
+            app:layout_constraintBottom_toTopOf="@+id/high_calc_ok_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"/>
@@ -56,7 +56,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/okButton"
+        android:id="@+id/high_calc_ok_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -74,7 +74,7 @@
         app:layout_constraintVertical_bias="0.39" />
 
     <Button
-        android:id="@+id/backButton"
+        android:id="@+id/high_calc_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -90,5 +90,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.39" />
+    <include
+        layout="@layout/toolbar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

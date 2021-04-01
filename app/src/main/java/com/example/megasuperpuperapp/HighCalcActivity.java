@@ -7,16 +7,13 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class HighCalcActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,6 +22,9 @@ public class HighCalcActivity extends AppCompatActivity implements View.OnClickL
     private Button backButton;
     private ConstraintLayout backGround;
     private EditText highInput;
+    private Toolbar toolbar;
+    private ImageButton toolbarBackButton;
+    private Button toolbarMainActivityButton;
 
 
     @Override
@@ -33,18 +33,27 @@ public class HighCalcActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.high_calc);
 
 
-        okButton = findViewById(R.id.okButton);
-        backButton = findViewById(R.id.backButton);
+        okButton = findViewById(R.id.high_calc_ok_button);
+        backButton = findViewById(R.id.high_calc_back_button);
         backGround = findViewById(R.id.backGround);
 
-        highInput = findViewById(R.id.highInput);
+        highInput = findViewById(R.id.high_calc_input);
         okButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
+
+        //toolbar = findViewById(R.id.toolbar2);
+        toolbarBackButton = findViewById(R.id.toolbar_back_button);
+        toolbarBackButton.setOnClickListener(this);
+
+        toolbarMainActivityButton = findViewById(R.id.toolbar_main_activity_button);
+        toolbarMainActivityButton.setOnClickListener(this);
+
+
         highInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    v.postDelayed(()-> showKeyboard(v), 200);
+                    v.postDelayed(() -> showKeyboard(v), 200);
                 } else {
                     hideKeyboard(v);
                 }
@@ -52,12 +61,6 @@ public class HighCalcActivity extends AppCompatActivity implements View.OnClickL
         });
         highInput.requestFocus();
     }
-
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        backGround.requestFocus();
-//    }
 
     private void hideKeyboard(View v) {
         final InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -73,14 +76,20 @@ public class HighCalcActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.okButton:
+            case R.id.high_calc_ok_button:
                 okClick();
                 break;
-            case R.id.backButton:
+            case R.id.high_calc_back_button:
                 finish();
                 break;
+            case R.id.toolbar_back_button:
+                finish();
+                break;
+            case R.id.toolbar_main_activity_button:
+                finish();
         }
     }
+
 
     private void okClick() {
         final String userHigh = highInput.getText().toString();

@@ -6,5 +6,6 @@
     <string name="enter_ur_high">Введите ваш рост</string>
     <string name="ur_high">Ваш рост</string>
     <string name="high_calc">Калькулятор роста</string>
+    <string name="main_activity">Главная</string>
 
 </resources>
